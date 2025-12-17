@@ -111,8 +111,6 @@ The training script outputs:
 
 If you find this code useful, please consider citing our work.
 
-(Manuscript under preparation.)
-
 ---
 
 ## Contact
