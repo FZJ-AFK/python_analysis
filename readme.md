@@ -1,34 +1,121 @@
 # GAN-based Gene Expression Prediction
 
-This repository contains Python code for model construction, training, and evaluation
-of a GAN-based framework for gene expression prediction across multiple datasets.
+This repository provides a PyTorch implementation of a **conditional Generative Adversarial Network (GAN)** for gene expression prediction under different drug and cell line conditions.
 
-## File structure
+The framework is designed to model the mapping between baseline gene expression profiles and perturbed expression states, and can be easily adapted to different transcriptomic datasets.
 
-- `data_utils.py`  
-  Data loading and preprocessing functions.
+---
 
-- `models.py`  
-  Definition of the generator and discriminator models.
+## Overview
 
-- `metrics.py`  
-  Evaluation metrics used in this study.
+Gene expression prediction under varying biological conditions is a fundamental task in computational biology and drug response modeling.
+In this work, we implement a **GAN-based regression framework**, where:
 
-- `train.py`  
-  Training and cross-validation logic.
+* The **Generator** predicts target gene expression profiles conditioned on:
 
-- `run_experiment.py`  
-  Main entry script for running experiments on a given dataset.
+  * baseline gene expression
+  * drug identity
+  * cell line identity
+* The **Discriminator** distinguishes real from generated expression profiles under the same conditions
+
+The model is trained using a combination of **reconstruction loss (MSE)** and **adversarial loss**, and evaluated via **K-fold cross-validation**.
+
+---
+
+## Repository Structure
+
+```text
+.
+├── data/
+│   └── README.txt          # Description of expected data format
+├── data_utils.py           # Data loading and preprocessing utilities
+├── models.py               # Generator and discriminator model definitions
+├── metrics.py              # Evaluation metrics
+├── train.py                # GAN training and cross-validation logic
+├── run_experiment.py       # Main script for running experiments
+├── .gitignore
+└── README.md
+```
+
+---
+
+## Data Format
+
+The model expects gene expression matrices in CSV format.
+
+* `input_expression.csv`: baseline gene expression profiles
+* `output_expression.csv`: target gene expression profiles
+
+Both files follow the same structure:
+
+* Rows represent genes
+* Columns represent samples
+* Additional rows encode sample, cell line, and drug information
+
+Detailed format specifications can be found in `data/README.txt`.
+
+> ⚠️ Large raw datasets are **not included** in this repository.
+> Users should place their own data files under the `data/` directory.
+
+---
 
 ## Requirements
 
-- Python >= 3.8
-- torch
-- numpy
-- pandas
-- scikit-learn
+* Python >= 3.8
+* PyTorch
+* NumPy
+* Pandas
+* scikit-learn
 
-You can install the required packages using:
+Install dependencies via:
 
 ```bash
 pip install torch numpy pandas scikit-learn
+```
+
+---
+
+## Usage
+
+1. Prepare your data files and place them in the `data/` directory.
+2. Update the data paths if necessary in `run_experiment.py`.
+3. Run the experiment:
+
+```bash
+python run_experiment.py
+```
+
+The script performs model training, cross-validation, and evaluation automatically.
+
+---
+
+## Output
+
+The training script outputs:
+
+* Prediction performance metrics (e.g., RMSE, R², classification-based scores)
+* Discriminator accuracy and AUC
+* A CSV file summarizing the results for the tested model
+
+---
+
+## Notes
+
+* This repository focuses on **method implementation and reproducibility**.
+* Hyperparameters are set to reasonable defaults and can be adjusted in `train.py`.
+* The code is modular and can be extended with alternative generators, discriminators, or evaluation metrics.
+
+---
+
+## Citation
+
+If you find this code useful, please consider citing our work.
+
+(Manuscript under preparation.)
+
+---
+
+## Contact
+
+For questions or suggestions, please open an issue or contact the repository owner.
+

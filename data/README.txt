@@ -1,10 +1,9 @@
-This directory is intended for input and output gene expression data.
+This directory contains a small demo dataset for testing and running the code.
 
-Due to data size and licensing restrictions, the actual data files are not included
-in this repository.
+The provided CSV files are randomly sampled subsets (15 samples × 50 genes)
+from the original dataset, and are intended only for demonstration and
+code validation purposes.
 
-Please download the data from the original source (e.g., GEO) and place the following
-files in this directory before running the code:
-
-- input_expression.csv
-- output_expression.csv
+Due to size and licensing constraints, the full dataset used in the study
+is not included in this repository. Users should replace these files with
+their own data following the same format.
