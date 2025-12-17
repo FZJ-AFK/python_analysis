@@ -75,6 +75,11 @@ pip install torch numpy pandas scikit-learn
 
 ---
 
+## Tested environment
+The code was tested with the CPU version of PyTorch on Windows.
+
+---
+
 ## Usage
 
 1. Prepare your data files and place them in the `data/` directory.
