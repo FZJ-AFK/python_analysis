@@ -6,9 +6,14 @@ from train import train_gan
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+DATA_DIR = Path("data")
+
+input_path  = DATA_DIR / "input_expression.csv"
+output_path = DATA_DIR / "output_expression.csv"
+
 X, y, drug, cell, gene_dim = load_data(
-    "E:/data/geo_data/p-lung.csv",
-    "E:/data/geo_data/p-drug.csv",
+    input_path,
+    output_path,
     device
 )
 

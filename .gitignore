@@ -1,0 +1,13 @@
+# Ignore all real data files
+data/*
+!data/README.txt
+!data/example_input_expression.csv
+!data/example_output_expression.csv
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
